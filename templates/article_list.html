@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+
+
+{% for article in article_list %} 
+     <a href="/article/{{article.id}}" target="_blank">
+        	<h4 class="blog-post-title">{{ article.title }}</h4></a> 
+        	<p class="blog-post-meta"> {{ article.publish_date }} </p>
+           
+   
+     {{ article.content| truncatechars:150 }}	
+  
+  	<hr /><br /> 
+
+
+{% endfor %} 
+
+
+{% endblock %}
+            

@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block page-content %}
+<!--<html>
+<head>
+        <meta charset="utf-8">
+        
+        <script src="/static/js/ckeditor.js"></script>
+        <link href="/static/css/sample.css" rel="stylesheet">
+</head>
+-->
+<div style="margin:50px">
+        <script src="/static/ckeditor/ckeditor.js"></script>
+        <link href="/static/ckeditor/samples/css/samples.css" rel="stylesheet">
+
+        <form action="/submit_article/" method="post">
+
+                <input type="text" class="form-control"  placeholder="文章标题" name="article_title" aria-describedby="sizing-addon2">
+
+
+
+
+
+                <textarea cols="55" id="editor1" name="article_content" rows="10">
+
+                </textarea>
+                <script>
+                                CKEDITOR.replace( 'editor1' );
+
+                </script>
+                <br>
+                <p>
+                        <select class="btn-success" name="article_category">
+                                <option value='linux'>Linux</option>
+                                <option value='database'>Database</option>
+                                <option value='virtualization'>Virtualization</option>
+                                <option value='cluster'>Cluster</option>
+                                <option value='monitor'>Monitor</option>
+                                <option value='automation'>Automation</option>
+                                <option value='python'>Python</option>
+                                <option value='security'>Security</option>
+                        </select>
+                        <input class="btn btn-info" type="submit" value="Submit">
+                </p>
+        </form>
+</div>
+{% endblock %}

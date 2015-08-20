@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block page-content %}
+
+        
+                <h2 class="blog-post-title">{{ article_obj.title }}</h2>
+
+        		<div id="content">{{ article_obj.content }}</div>
+                   
+     
+
+
+
+        
+
+<SCRIPT src="/static/js/jquery.min.js"></SCRIPT>
+<script type="text/javascript">
+        var article_content=$("#content").text();
+        $("#content").html(article_content);
+</script>
+        
+
+
+
+        
+
+
+{% endblock %}
