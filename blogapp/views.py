@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from blogapp.models import *
 from django.db.models import Count
+from django.contrib import auth,comments
 import datetime,time
 
 
@@ -38,13 +39,15 @@ def article_detail(request,article_id):
 
 
 
-def create_article(request):
-	return render_to_response("create_article.html")
+#def create_article(request):
+#	return render_to_response("create_article.html")
+
 
 def submit_article(request):
         article_title =  request.POST.get('article_title')
         article_content = request.POST.get('article_content')
         article_category = request.POST.get('article_category')
+        username_id = request.POST.get('username_id')
         article.objects.create(
                 title = article_title,
                 content = article_content,
@@ -70,3 +73,30 @@ def category(request,categoryName):  #category archives
 	latest_article = article.objects.order_by('-id')
 	category = article.objects.values('category').annotate(m_amount =Count('category'))	
 	return render_to_response("category.html",{'archives_list':archives_list,'index_content':index_content,'latest_article':latest_article,'category':category,'category_name':category_name,'category_list':category_list})
+
+
+
+#--------------------------------------------login auth--------------------------------------------
+
+def login(request):   #login
+	return render_to_response("login.html")
+
+def login_auth(request):
+        username,password = request.POST['username'],request.POST['password']
+	user = auth.authenticate(username = username,password = password)
+        if user is not None:  #authentications is correct
+                auth.login(request,user)
+         	return render_to_response("create_article.html")
+        else:
+         	return render_to_response("login.html",{'login_err':"Wrong username or password!"})
+
+	"""
+	try:
+        	login = userinfo.objects.get(username=username)
+		if(login.username == username and login.password == password):
+         		return render_to_response("create_article.html",{'username_id':login.id})
+		else:
+         		return render_to_response("login.html",{'login_err':"Wrong username or password!"})
+	except:
+         	return render_to_response("login.html",{'login_err':"Wrong username or password!"})
+	"""

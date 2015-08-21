@@ -4,12 +4,19 @@
 
 
 {% for article in article_list %} 
-     <a href="/article/{{article.id}}" target="_blank">
+     <a href="/article/{{article.id}}">
+    
         	<h4 class="blog-post-title">{{ article.title }}</h4></a> 
         	<p class="blog-post-meta"> {{ article.publish_date }} </p>
            
    
-     {{ article.content| truncatechars:150 }}	
+     <div id="content">{{ article.content| truncatechars:150 }}	</div>
+     
+<SCRIPT src="/static/js/jquery.min.js"></SCRIPT>
+<script type="text/javascript">
+        var article_content=$("#content").text();
+        $("#content").html(article_content);
+</script>
   
   	<hr /><br /> 
 

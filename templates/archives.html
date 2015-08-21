@@ -1,18 +1,36 @@
 {% extends "index.html" %}
-{% block page-content %}
 
+{% block page-content %}
+<SCRIPT src="/static/js/jquery.min.js"></SCRIPT>
 
 {% for article in archives %} 
      <a href="/article/{{article.id}}" target="_blank">
         	<h2 class="blog-post-title">{{ article.title }}</h2></a> 
-        	<p class="blog-post-meta"> {{ article.publish_date }} </p>
+        	<h2 class="blog-post-meta"> {{ article.publish_date }} </h2>
            
    
-     {{ article.content| truncatechars:150 }}	
+     <p id="{{forloop.revcounter0}}">{{ article.content| truncatechars:150 }}</p> 
   
-  	<hr /><br /> 
+  	 
 
-
+ 		 <script type="text/javascript">
+		  	 var times = $("p").attr("id"); 	 
+			
+			 for(var i=times;i>=0;i--)
+			 {
+				
+				var article_content=$("#" + i).text();
+				$("#" + i).html(article_content);
+				if (!article_content)
+				{ 
+					//alert(i);
+					break;
+				}
+			   
+			 }
+				 
+   		  </script>
+   <hr /><br />
 {% endfor %} 
 
 
