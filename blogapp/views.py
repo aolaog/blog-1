@@ -10,14 +10,14 @@ import datetime,time
 
 # Create your views here.
 global category_name
-category_name = ['linux',
-		'database',
-		'virtualization',
-		'cluster',
-		'monitor',
-		'automation',
-		'python',
-		'security']
+category_name = ['Linux',
+		'Database',
+		'Virtualization',
+		'Cluster',
+		'Monitor',
+		'Automation',
+		'Python',
+		'Security']
 
 
 def index(request):
@@ -39,8 +39,8 @@ def article_detail(request,article_id):
 
 
 
-#def create_article(request):
-#	return render_to_response("create_article.html")
+def create_article(request):
+	return render_to_response("create_article.html")
 
 
 def submit_article(request):
@@ -57,7 +57,7 @@ def submit_article(request):
                 modify_date = datetime.datetime.now(),
 		archives_date = time.strftime('%Y%m',time.localtime(time.time()))
         )
-        return HttpResponse('yes')
+        return HttpResponseRedirect("/")
 
 def archives(request,archives_date):  #article archives
 	archives_list = article.objects.values('archives_date').annotate(m_amount =Count('archives_date'))
@@ -84,9 +84,14 @@ def login(request):   #login
 def login_auth(request):
         username,password = request.POST['username'],request.POST['password']
 	user = auth.authenticate(username = username,password = password)
+	archives_list = article.objects.values('archives_date').annotate(m_amount =Count('archives_date'))  #article archives
+	index_content = article.objects.order_by('-id')[0]  #latest content
+	latest_article = article.objects.order_by('-id') #recent articles
+	category = article.objects.values('category').annotate(m_amount =Count('category'))	#category archives
         if user is not None:  #authentications is correct
                 auth.login(request,user)
-         	return render_to_response("create_article.html")
+		#return render_to_response("create_article.html")
+		return render_to_response("admin.html",{'archives_list':archives_list,'index_content':index_content,'latest_article':latest_article,'category':category,'category_name':category_name})
         else:
          	return render_to_response("login.html",{'login_err':"Wrong username or password!"})
 
