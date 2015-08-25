@@ -39,17 +39,9 @@
        <div class="blog-masthead">
       <div class="container"  >
         <nav class="blog-nav">
-          <!--<a class="blog-nav-item active" href="/">首页</a>
-          <a class="blog-nav-item" href="/linux_blog/">Linux</a>
-          <a class="blog-nav-item" href="/database_blog/">数据库</a>
-          <a class="blog-nav-item" href="/virtualization_blog/">虚拟化</a>
-          <a class="blog-nav-item" href="/cluster_blog/">集群</a>
-          <a class="blog-nav-item" href="/monitor_blog/">监控</a>
-          <a class="blog-nav-item" href="/automation_blog/">自动化</a>
-          <a class="blog-nav-item" href="/python_blog/">PYTHON</a>
-          <a class="blog-nav-item" href="/security_blog/">安全</a>-->
+          
           {% for name in category_name %}
-             <a class="blog-nav-item" href="/category/{{ name }}/">{{ name }}</a>
+             <a class="blog-nav-item" href="/category/{{ name.id }}/">{{ name }}</a>
           {% endfor %}
         </nav>
       </div>
@@ -108,8 +100,8 @@
             <h4>分类目录</h4>
             <ol class="list-unstyled">
             
-              {% for count in category %}
-              <li><a href="/category/{{ count.category }}" id="test">{{ count.category }} ({{ count.m_amount }}) </a></li>
+              {% for id,category_name,count in category %}
+              <li><a href="/category/{{ id }}" id="test">{{ category_name }} ({{ count}}) </a></li>
               {% endfor %}
             </ol>
           </div>

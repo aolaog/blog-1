@@ -8,3 +8,4 @@ class articleAdmin(admin.ModelAdmin):
 
 admin.site.register(article,articleAdmin)
 admin.site.register(userinfo)
+admin.site.register(categoryName)
