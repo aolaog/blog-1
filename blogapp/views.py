@@ -47,6 +47,25 @@ def create_article(request):
 		category_name = categoryName.objects.order_by('id')
 		return render_to_response("create_article.html",{'category_name':category_name})
 
+def admin_article(request):
+	if not request.user.is_authenticated():
+		print request.user
+        	return HttpResponseRedirect("/")
+	else: 
+		archives_list = article.objects.values('archives_date').annotate(m_amount =Count('archives_date'))  #article archives
+		index_content = article.objects.order_by('-id')[0]  #latest content
+		latest_article = article.objects.order_by('-id') #recent articles
+		category_name = categoryName.objects.order_by('id')
+		return render_to_response("admin_article.html",{'archives_list':archives_list,'index_content':index_content,'latest_article':latest_article,'category_name':category_name})
+
+def admin_category(request):
+	if not request.user.is_authenticated():
+		print request.user
+        	return HttpResponseRedirect("/")
+	else: 
+		category_name = categoryName.objects.order_by('id')
+		return render_to_response("admin_category.html",{'category_name':category_name})
+
 
 def submit_article(request):
         article_title =  request.POST.get('article_title')
@@ -63,6 +82,16 @@ def submit_article(request):
 		archives_date = time.strftime('%Y%m',time.localtime(time.time()))
         )
         return HttpResponseRedirect("/")
+
+
+def submit_category(request):
+	categoryName.objects.create(
+		category_name = request.POST.get('categoryName')
+	)
+	print request.POST.get('categoryName')
+        return HttpResponseRedirect("/admin_category/")
+
+
 
 def archives(request,archives_date):  #article archives
 	conn = conn_mysql.connMysql()
@@ -106,13 +135,3 @@ def login_auth(request):
         else:
          	return render_to_response("login.html",{'login_err':"Wrong username or password!"})
 
-	"""
-	try:
-        	login = userinfo.objects.get(username=username)
-		if(login.username == username and login.password == password):
-         		return render_to_response("create_article.html",{'username_id':login.id})
-		else:
-         		return render_to_response("login.html",{'login_err':"Wrong username or password!"})
-	except:
-         	return render_to_response("login.html",{'login_err':"Wrong username or password!"})
-	"""

@@ -62,13 +62,15 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">文章</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li><a href="/admin_article/">文章</a></li>
+            <li><a href="/admin_category/">分类目录</a></li>
+            <li><a href="/login/">退出</a></li>
           </ul>
         
-        </div>
+        </div> 
+       
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        {% block page-content %}
           <h1 class="page-header">Dashboard</h1>
 
         
@@ -76,7 +78,7 @@
          
           
             <!-------------------------------------------------------------------------------------------------------  -->
-            {% block page-content %}
+           
             
             <div >
 				<div id="wpbody">
@@ -277,7 +279,7 @@
           </div>
         </div>
       </div>
-    </div>
+   
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
