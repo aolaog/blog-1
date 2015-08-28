@@ -15,7 +15,9 @@ Js				放置js文件
 ckeditor 			放置文档编辑文件
 
 templates: 模板目录
+
 模板功能如下：
+
 	index.html     		首页 	 
 	archives.html           文章归档 
 	category.html 		目录归档
@@ -28,11 +30,16 @@ templates: 模板目录
 	admin_article.html 	管理文章（删除操作）
 	
 models文件创建了两张表：
+
 	categoryName: 		项目名称表
+	
 	article： 		文章表
 
 urls文件：
-	urlpatterns = patterns('',
+
+
+urlpatterns = patterns('',
+
     # Examples:
     # url(r'^$', 'blog.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
