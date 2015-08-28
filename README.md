@@ -4,15 +4,26 @@
 django版本：1.6.5
 
 目录结构如下：
-blog:  				django项目名称
-blogapp:  			django app名称
-conn_mysql:  			数据库连接模块
-static: 			静态资源目录，这里的样式和网页模板都是使用bootstrap3.0
+
+blog:  					django项目名称
+
+blogapp:  				django app名称
+
+conn_mysql:  				数据库连接模块
+	
+static: 				静态资源目录，这里的样式和网页模板都是使用bootstrap3.0
+
+
 静态资源如下： 
-css    				放置css样式文件
-fonts  				放置字体文件
-Js				放置js文件
-ckeditor 			放置文档编辑文件
+
+css    					放置css样式文件
+
+fonts  					放置字体文件
+
+Js					放置js文件
+
+ckeditor 				放置文档编辑文件
+
 
 templates: 模板目录
 
