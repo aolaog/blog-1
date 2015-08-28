@@ -90,23 +90,21 @@
                     <li class="publish"><a href="#">已发布<span class="count">（）</span></a></li>
 				</ul>
                 </form>
-				<form id="posts-filter" action="/" method="get">
+                
+				<form id="posts-filter" action="/submit_delarticle/" method="post">
 					<p class="search-box">
                     <label class="screen-reader-text" for="post-search-input">搜索文章:</label>
                     <input type="search" id="post-search-input" name="s" value="">
                     <input type="submit" name="" id="search-submit" class="button" value="搜索文章"></p>
                 
-                    <input type="hidden" name="post_status" class="post_status_page" value="all">
-                    <input type="hidden" name="post_type" class="post_type_page" value="post">
-
-					<input type="hidden" id="_wpnonce" name="_wpnonce" value="b8c5fa794f"><input type="hidden" name="_wp_http_referer" value="/wp-admin/edit.php">	<div class="tablenav top">
+                   	<div class="tablenav top">
 
 					<div class="alignleft actions bulkactions">
                         <label for="bulk-action-selector-top" class="screen-reader-text">选择批量操作</label>
                         <select name="action" id="bulk-action-selector-top">
                         <option value="-1">批量操作</option>
                         <option value="edit" class="hide-if-no-js">编辑</option>
-                        <option value="trash" selected>移至回收站</option>
+                        <option value="trash" selected>删除</option>
                   </select>
                         <input type="submit" name="" id="doaction" class="button action" value="应用">
 					</div>
@@ -118,10 +116,10 @@
                             <option value="201508">{{ month.archives_date }}</option>
                             {% endfor %}
 						</select>
-                        <select name="cat" id="cat" class="postform">
+                        <select id="cat" class="postform">
                             <option value="0">查看所有分类目录</option>
                             {% for category in category_name %}
-                            <option class="level-0" value="4">{{ category }}</option>
+                            <option class="level-0" >{{ category }}</option>
                             {% endfor %}
                         </select>
 						<input type="submit" name="filter_action"  class="button" value="筛选">		
@@ -131,7 +129,7 @@
 						<span class="pagination-links">
                         	<a class="first-page disabled" title="前往第一页" href="./文章 ‹ Pzh's blog!! — WordPress_files/文章 ‹ Pzh's blog!! — WordPress.html">«</a>
 							<a class="prev-page disabled" title="前往上一页" href="#">‹</a>
-							<span class="paging-input">第<label for="current-page-selector" class="screen-reader-text">选择页面</label><input class="current-page" id="current-page-selector" title="当前页面" type="text" name="paged" value="1" size="1">页，共<span class="total-pages">3
+							<span class="paging-input">第<label for="current-page-selector" class="screen-reader-text">选择页面</label><input class="current-page" id="current-page-selector" title="当前页面" type="text" name="paged" value="1" size="1">页，共<span class="total-pages">1
                         	</span>页
                         </span>
                             <a class="next-page" title="前往下一页" href="#">›</a>
@@ -215,7 +213,7 @@
 						<tr id="post-230" class="post-230 type-post status-publish format-standard hentry category-linux  iedit author-self level-0">
 						<th scope="row" class="check-column">
 						<label class="screen-reader-text" for="cb-select-230"></label>
-							<input id="cb-select-230" type="checkbox" name="post[]" value="230">
+							<input id="cb-select-230" type="checkbox" name="articleName" value="{{ article }}">
 							<div class="locked-indicator"></div>
 						</th>
                         
@@ -249,19 +247,21 @@
 					</tbody>
                     {% endfor %}
 		</table>
-	<div class="tablenav bottom">
+	<!--<div class="tablenav bottom">
 
 		<div class="alignleft actions bulkactions">
 			<label for="bulk-action-selector-bottom" class="screen-reader-text">选择批量操作</label>
             <select name="action2" id="bulk-action-selector-bottom">
                 <option value="-1" selected="selected">批量操作</option>
                 <option value="edit" class="hide-if-no-js">编辑</option>
-                <option value="trash">移至回收站</option>
+                <option value="trash">删除</option>
     		</select>
 			<input type="submit" name="" id="doaction2" class="button action" value="应用">
 		</div>
 		
 	</div>
+    -->
+    </div>
 		
 	
 

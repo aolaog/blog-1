@@ -3,102 +3,10 @@
 
          
 {% block page-content %}
-<!--<h2>分类目录</h2>
-            
-    
-            	
-                <div style="float:left">
 
-
-
-
-<h3>添加新分类目录</h3>
-<h3>添加新分类目录</h3>
-<h3>添加新分类目录</h3>
-<h3>添加新分类目录</h3>
-
-<form id="addtag" method="post" action="http://www.pengzihe.com/wp-admin/edit-tags.php" class="validate">
-<input type="hidden" name="action" value="add-tag">
-<input type="hidden" name="screen" value="edit-category">
-<input type="hidden" name="taxonomy" value="category">
-<input type="hidden" name="post_type" value="post">
-<input type="hidden" id="_wpnonce_add-tag" name="_wpnonce_add-tag" value="2b16071d22"><input type="hidden" name="_wp_http_referer" value="/wp-admin/edit-tags.php?taxonomy=category">
-</form>
-</div><!-- /col-left -->
-
-                
-  <!--              
-				<div  style="float:left; margin-left:400px;">
-				
-					<form id="posts-filter" action="/" method="get">			
-					<table class="wp-list-table widefat fixed posts">
-                    
-                        <tr>
-                       
-                        <thead>
-						<tr>
-						<th scope="col" id="cb" class="manage-column column-cb check-column" style="">
-                        <label class="screen-reader-text" for="cb-select-all-1">全选</label><input id="cb-select-all-1" type="checkbox">
-                        </th>
-                        <th scope="col" id="title" class="manage-column column-title sortable desc" style="">
-                        	<a href="#">
-                            <span>名称</span>
-                            <span class="sorting-indicator"></span>
-                            </a>
-                        </th>
-                        <th scope="col" id="#" class="manage-column" style="">数量</th>
-                        
-                       
-					 </thead>
-                         
-                         </tr>
-                	
-<!-- ----------------------------------------------------------------   -->   
-<!--					{% for category in category_name %}
-					<tbody id="the-list">
-			
-						<tr id="post-230" class="post-230 type-post status-publish format-standard hentry category-linux  iedit author-self level-0">
-						<th scope="row" class="check-column">
-						<label class="screen-reader-text" for="cb-select-230"></label>
-							<input id="cb-select-230" type="checkbox" name="post[]" value="230">
-							<div class="locked-indicator"></div>
-						</th>
-                        
-                     
-						
-                        <td class="author column-author"><a href="#">{{ category }}</a></td>  <!--  发表日志作者  -->   
-                        
-<!--						<td class="categories column-categories"><a href="#">{{ article.category }}</a></td>   
-                       
-						
-                        </tr>
-                     
-					</tbody>
-                    {% endfor %}
-                   
-					</table>
-				<div class="tablenav bottom">
-
-					<div class="alignleft actions bulkactions">
-                        <label for="bulk-action-selector-bottom" class="screen-reader-text">选择批量操作</label>
-                        <select name="action2" id="bulk-action-selector-bottom">
-                            <option value="-1" selected="selected">批量操作</option>
-                            <option value="edit" class="hide-if-no-js">编辑</option>
-                            <option value="trash">移至回收站</option>
-                        </select>
-                        <input type="submit" name="" id="doaction2" class="button action" value="应用">
-					</div>
-		
-				</div>
-		
-	
-
-			</form>
-            </div>
--->
 <h2>分类目录</h2>
 <div id="col-right">
-<form id="posts-filter" action="/" method="get">			
+<form id="posts-filter" action="/submit_delcategory/" method="post">			
 					<table class="wp-list-table widefat fixed posts">
                     
                         <tr>
@@ -128,7 +36,7 @@
 						<tr id="post-230" class="post-230 type-post status-publish format-standard hentry category-linux  iedit author-self level-0">
 						<th scope="row" class="check-column">
 						<label class="screen-reader-text" for="cb-select-230"></label>
-							<input id="cb-select-230" type="checkbox" name="post[]" value="230">
+							<input id="cb-select-230" type="checkbox" name="delCategory" value="{{ category }}">
 							<div class="locked-indicator"></div>
 						</th>
                         
@@ -150,9 +58,8 @@
 					<div class="alignleft actions bulkactions">
                         <label for="bulk-action-selector-bottom" class="screen-reader-text">选择批量操作</label>
                         <select name="action2" id="bulk-action-selector-bottom">
-                            <option value="-1" selected="selected">批量操作</option>
-                            <option value="edit" class="hide-if-no-js">编辑</option>
-                            <option value="trash">移至回收站</option>
+                           <!-- <option value="-1" selected="selected">批量操作</option>-->
+                            <option value="trash">删除</option>
                         </select>
                         <input type="submit" name="" id="doaction2" class="button action" value="应用">
 					</div>

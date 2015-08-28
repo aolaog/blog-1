@@ -81,7 +81,7 @@ def submit_article(request):
                 modify_date = datetime.datetime.now(),
 		archives_date = time.strftime('%Y%m',time.localtime(time.time()))
         )
-        return HttpResponseRedirect("/")
+        return HttpResponseRedirect("/admin_article/")
 
 
 def submit_category(request):
@@ -91,7 +91,21 @@ def submit_category(request):
 	print request.POST.get('categoryName')
         return HttpResponseRedirect("/admin_category/")
 
+def submit_delCategory(request):
+	print request.POST.get('delCategory')
+	delCategory = request.POST.get('delCategory')
+	categoryName.objects.get(category_name=delCategory).delete()	
+        return HttpResponseRedirect("/admin_category/")
 
+def submit_delArticle(request):
+	action = request.POST.get('action')
+	articleName = request.POST.get('articleName')
+	if action == 'trash' and articleName != None:
+		article.objects.get(title=articleName).delete()
+		return HttpResponseRedirect("/admin_article/")
+	else:
+		return HttpResponseRedirect("/admin_article/")
+	return HttpResponseRedirect("/admin_article/")
 
 def archives(request,archives_date):  #article archives
 	conn = conn_mysql.connMysql()
