@@ -54,5 +54,7 @@ urls文件：
     url(r'^admin_category/$',admin_category),			#后台目录管理
 )
 
-views文件，具体信息请参考github源码，功能实现和urls文件说明一样
+views文件，具体信息请参考github源码，功能实现和urls文件说明一样。
+
+展示效果可以查看：http://www.pengzihe.com/?p=389
 
